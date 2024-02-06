@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.example.toway.databinding.ActivityLoginBinding
+import com.example.toway.databinding.ActivityCustomerLoginBinding
 import com.example.toway.databinding.ActivityMainBinding
 import com.example.toway.databinding.ActivitySplashBinding
 
@@ -22,7 +22,7 @@ class SplashActivity: AppCompatActivity() {
         )
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashActivity,ActivityLoginBinding::class.java))
+            startActivity(Intent(this@SplashActivity,ActivityCustomerLoginBinding::class.java))
             finish()
         },2000)
     }

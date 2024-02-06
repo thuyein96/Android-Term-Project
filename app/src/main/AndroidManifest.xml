@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -15,22 +17,42 @@
         android:theme="@style/Theme.Toway"
         tools:targetApi="31">
 
-
         <activity
-            android:name=".LoginActivity"
+            android:name=".RoleActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".CustomerLoginActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".CustomerRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CustomerHomePageActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".DriverLoginActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".DriverRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DriverHomePageActivity"
+            android:exported="false">
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD_skFcS0-C0ekSuIfNpssK2FX3Yo8eR9s"/>
     </application>
 
 </manifest>
