@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.toway.OrderList
+import com.example.toway.utils.OrderList
 import com.example.toway.adapters.OrderListAdapter
 import com.example.toway.databinding.FragmentListBinding
 

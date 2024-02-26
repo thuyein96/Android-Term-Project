@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import coil.load
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toway.databinding.OrderListItemBinding
-import com.example.toway.models.Order
+import com.example.toway.viewModels.Order
 
 class OrderListAdapter(private val orders: List<Order>) :
     RecyclerView.Adapter<OrderListAdapter.OrderListViewHolder>() {
@@ -25,7 +25,7 @@ class OrderListAdapter(private val orders: List<Order>) :
         val order = orders[position]
 
         holder.view.tvCustomerName.text = order.customerName
-        holder.view.tvLocation.text = order.location
+        holder.view.tvLocation.text = order.location.toString()
         holder.view.tvOrderProblem.text = order.problem
         holder.view.tvPlateNumber.text = order.plateNumber
         holder.view.ivImage.load(order.image)
