@@ -18,7 +18,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".RoleActivity"
+            android:name=".activities.RoleActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -26,33 +26,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CustomerLoginActivity"
+            android:name=".activities.CustomerLoginActivity"
             android:exported="false">
 
         </activity>
         <activity
-            android:name=".CustomerRegisterActivity"
+            android:name=".activities.CustomerRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomerHomePageActivity"
+            android:name=".activities.CustomerHomePageActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".DriverLoginActivity"
+            android:name=".activities.CallServiceActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".activities.DriverLoginActivity"
             android:exported="false">
 
         </activity>
         <activity
-            android:name=".DriverRegisterActivity"
+            android:name=".activities.DriverRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".DriverHomePageActivity"
+            android:name=".activities.DriverHomePageActivity"
             android:exported="false">
         </activity>
 
         <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD_skFcS0-C0ekSuIfNpssK2FX3Yo8eR9s"/>
+            android:value="@string/google_map_key"/>
     </application>
 
 </manifest>
