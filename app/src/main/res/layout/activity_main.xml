@@ -10,20 +10,47 @@
         android:id="@+id/btnCallService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="118dp"
+        android:layout_marginTop="13dp"
         android:text="Call Tow Service"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mvGoogleMap" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mvGoogleMap"
-        android:layout_width="410dp"
-        android:layout_height="510dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="412dp"
+        android:layout_height="577dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnProfile"
+        android:layout_width="64dp"
+        android:layout_height="56dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/mvGoogleMap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/round_person_24"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:text="TOWAY"
+        android:textAlignment="center"
+        android:textColor="#03A9F4"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/mvGoogleMap"
+        app:layout_constraintEnd_toEndOf="@+id/btnProfile"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

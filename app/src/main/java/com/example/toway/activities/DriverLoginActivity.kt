@@ -47,11 +47,12 @@ class DriverLoginActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()){
                     for (userSnapshot in dataSnapshot.children){
-                        val customer = userSnapshot.getValue(Customer::class.java)
+                        val driver = userSnapshot.getValue(Customer::class.java)
 
-                        if (customer != null && customer.password == password && customer.role == "Driver"){
+                        if (driver != null && driver.password == password && driver.role == "Driver"){
                             Toast.makeText(this@DriverLoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@DriverLoginActivity, DriverHomePageActivity::class.java)
+                            intent.putExtra("id", driver.id)
                             startActivity(intent)
                             finish()
                             return

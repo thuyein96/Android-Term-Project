@@ -1,5 +1,6 @@
 package com.example.toway.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -67,10 +68,12 @@ class CallServiceActivity : AppCompatActivity() {
     private fun recordOrder(userName: String, plateNumber: String, phone: String, vehicleProblem: String) {
 
         firebaseDatabase = FirebaseDatabase.getInstance()
-        serviceCallRef = firebaseDatabase.reference.child("Orders")
+        serviceCallRef = firebaseDatabase.getReference("Orders")
         PermissionHandler.requestPermissionIfRequired(this, PermissionHandler.GPS)
         viewModel.getCurrentLocation()
         var location: LatLng? = null
+        var lat: Double? = null
+        var lng: Double? = null
 
         viewModel.userLocation.observe(this) {
             location = LatLng(it.latitude, it.longitude)
@@ -88,10 +91,11 @@ class CallServiceActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val id = serviceCallRef.push().key
-                    val order = Order(id, userName, location, plateNumber, phone, vehicleProblem, "")
+                    val order = Order(id, userName, location?.latitude, location?.longitude, plateNumber, phone, vehicleProblem)
                     serviceCallRef.child(id!!).setValue(order)
                     Toast.makeText(this@CallServiceActivity, "Calling Service Now", Toast.LENGTH_SHORT).show()
-//                        startActivity(Intent(this@CallServiceActivity, ?????::class.java))
+                    val intent = Intent(this@CallServiceActivity, PaymentActivity::class.java)
+                    startActivity(intent)
                     finish()
                 }
             }

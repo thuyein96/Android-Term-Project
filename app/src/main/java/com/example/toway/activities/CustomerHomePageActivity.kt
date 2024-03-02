@@ -29,70 +29,83 @@ import java.io.IOException
 
 class CustomerHomePageActivity : AppCompatActivity() {
     private val view: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater)}
-//    private val viewModel: GPSViewModel by viewModels()
-//    private lateinit var map: GoogleMap
+    private val viewModel: GPSViewModel by viewModels()
+    private lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(view.root)
 
-//        PermissionHandler.requestPermissionIfRequired(this, PermissionHandler.GPS)
-//        viewModel.getCurrentLocation()
 
-//        view.mvGoogleMap.onCreate(savedInstanceState)
-//
-//        view.mvGoogleMap.getMapAsync {
-//            map = it
-//        }
-//
-//
-//        viewModel.userLocation.observe(this@CustomerHomePageActivity) {
-//            var currentLocation = LatLng(it.latitude, it.longitude)
-//
-//
-//            map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 14f))
-//
-//            map.addMarker(MarkerOptions().position(currentLocation))
-//        }
+
+        val loginUserId  = intent.getStringExtra("id")
+        PermissionHandler.requestPermissionIfRequired(this, PermissionHandler.GPS)
+        viewModel.getCurrentLocation()
+
+        view.mvGoogleMap.onCreate(savedInstanceState)
+
+        view.mvGoogleMap.getMapAsync {
+            map = it
+        }
+
+
+        viewModel.userLocation.observe(this@CustomerHomePageActivity) {
+            var currentLocation = LatLng(it.latitude, it.longitude)
+
+
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 14f))
+
+            map.addMarker(MarkerOptions().position(currentLocation))
+        }
 
         view.btnCallService.setOnClickListener {
             startActivity(Intent(this@CustomerHomePageActivity, CallServiceActivity::class.java))
             finish()
         }
+
+        view.btnProfile.setOnClickListener {
+            val intent = Intent(this@CustomerHomePageActivity, CustomerProfileActivity::class.java)
+            intent.putExtra("id", loginUserId)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        view.mvGoogleMap.onStart()
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        view.mvGoogleMap.onResume()
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//        view.mvGoogleMap.onPause()
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        view.mvGoogleMap.onStop()
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        view.mvGoogleMap.onDestroy()
-//    }
-//
-//    override fun onLowMemory() {
-//        super.onLowMemory()
-//        view.mvGoogleMap.onLowMemory()
-//    }
-//
-//    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-//        super.onSaveInstanceState(outState, outPersistentState)
-//        view.mvGoogleMap.onSaveInstanceState(outState)
-//    }
+
+
+    override fun onStart() {
+        super.onStart()
+        view.mvGoogleMap.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view.mvGoogleMap.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        view.mvGoogleMap.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        view.mvGoogleMap.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        view.mvGoogleMap.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        view.mvGoogleMap.onLowMemory()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        view.mvGoogleMap.onSaveInstanceState(outState)
+    }
 }

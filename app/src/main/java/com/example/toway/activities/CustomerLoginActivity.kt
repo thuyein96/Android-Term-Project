@@ -29,8 +29,11 @@ class CustomerLoginActivity : AppCompatActivity() {
             val loginUsername = view.loginUsername.text.toString()
             val loginPassword = view.loginPassword.text.toString()
 
+
             if(loginUsername.isNotEmpty() && loginPassword.isNotEmpty()){
+
                 loginUser(loginUsername, loginPassword)
+
             } else {
                 Toast.makeText(this@CustomerLoginActivity, "All fields are mandatory", Toast.LENGTH_SHORT).show()
             }
@@ -40,6 +43,7 @@ class CustomerLoginActivity : AppCompatActivity() {
             startActivity(Intent(this@CustomerLoginActivity, CustomerRegisterActivity::class.java))
             finish()
         }
+
     }
 
     private fun loginUser(username: String, password: String){
@@ -52,6 +56,7 @@ class CustomerLoginActivity : AppCompatActivity() {
                         if (customer != null && customer.password == password && customer.role == "Customer"){
                             Toast.makeText(this@CustomerLoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@CustomerLoginActivity, CustomerHomePageActivity::class.java)
+                            intent.putExtra("id", customer.id)
                             startActivity(intent)
                             finish()
                             return
@@ -66,4 +71,6 @@ class CustomerLoginActivity : AppCompatActivity() {
             }
         })
     }
+
+
 }
